@@ -15,7 +15,14 @@ RecordStore.prototype.addRecord = function (record) {
 };
 
 RecordStore.prototype.removeRecord = function (record) {
-  this.record_collection.
+  let index = this.record_collection.indexOf(record);
+  this.record_collection.splice(index, 1);
+
+};
+
+RecordStore.prototype.sellRecord = function (record) {
+  this.addFunds(record.price);
+  this.removeRecord(record);
 };
 
 

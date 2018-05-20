@@ -40,19 +40,18 @@ describe('RecordStore', function () {
     assert.strictEqual(recordStore.record_collection.length, 1);
   });
 
-  it('should be able to remove a record from its stock'), function(){
+  it('should be able to remove a record from its stock', function(){
     recordStore.addRecord(record);
     recordStore.addRecord(record);
     recordStore.removeRecord(record);
     assert.strictEqual(recordStore.record_collection.length, 1);
+  });
 
-  }
-
-  it('should be able to sell a record if it has the record'), function(){
-    record.store.addRecord(record);
-    record.Store.sellRecord(record);
-    assert.strictEqual(recordStore.record_collection.length, 1);
-    assert.strictEqual(recordStore.funds, 1050);
-  }
+  it('should be able to sell a record if it has the record', function(){
+    recordStore.addRecord(record);
+    recordStore.sellRecord(record);
+    assert.strictEqual(recordStore.record_collection.length, 0);
+    assert.strictEqual(recordStore.funds, 1000);
+  });
 
 });
