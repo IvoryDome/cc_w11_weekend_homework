@@ -42,6 +42,7 @@ describe('RecordCollector', function () {
   });
 
   it ('it should be able to find a record by title', function(){
+    recordCollector.addRecord(record);
     result = recordCollector.findRecordByTitle('Their Greatest Hits 1971 - 1975');
     assert.strictEqual(result, record);
   });
@@ -53,8 +54,11 @@ describe('RecordCollector', function () {
     assert.strictEqual(recordCollector.record_collection.length, 1);
   });
 
-  xit ('it should be able to buy a record if it has enough funds', function(){
-
+  it ('it should be able to buy a record if it has enough funds', function(){
+    recordCollector.addFunds(1500);
+    recordCollector.buyRecord(record);
+    assert.strictEqual(recordCollector.record_collection.length, 1);
+    assert.strictEqual(recordCollector.funds, 500);
   });
 
   it ('it should be able to sell a record if it has the record', function(){

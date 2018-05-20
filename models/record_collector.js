@@ -22,16 +22,15 @@ RecordCollector.prototype.findRecordByTitle = function (title) {
   return recordToFind[0];
 };
 
-// Cinema.prototype.findFilmByTitle = function (title) {
-//   const filmToFind = films.filter(film => film.title === title);
-//   return filmToFind[0];
-// };
-
-
-
 RecordCollector.prototype.removeRecord = function (record) {
   let index = this.record_collection.indexOf(record);
   this.record_collection.splice(index, 1);
+};
+
+RecordCollector.prototype.buyRecord = function (record) {
+  if (this.funds >= record.price){
+    this.addRecord(record)};
+    this.removeFunds(record.price);
 };
 
 RecordCollector.prototype.sellRecord = function (record) {
@@ -39,9 +38,6 @@ RecordCollector.prototype.sellRecord = function (record) {
   this.removeRecord(record);
 };
 
-RecordCollector.prototype.buyRecord = function (record) {
-  this.removeFunds(record.price);
-  this.addRecord(record);
-};
+
 
 module.exports = RecordCollector;
